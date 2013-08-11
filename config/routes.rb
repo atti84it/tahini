@@ -1,4 +1,9 @@
 Tahini::Application.routes.draw do
+  get "shopping_list/index"
+  post "shopping_list/add_recipe"
+  post "shopping_list/clear"
+  get "shopping_list/ingredients"
+  
   resources :recipes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

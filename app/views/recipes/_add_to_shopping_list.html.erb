@@ -1,0 +1,4 @@
+<%= form_tag(:controller=>'shopping_list', :action => 'add_recipe', :recipe_id => @recipe) do %>
+  Number of people: <%= text_field_tag :yields %>
+  <%= submit_tag %>
+<% end %>

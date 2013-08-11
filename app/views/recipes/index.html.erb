@@ -1,4 +1,4 @@
-<h1>Listing recipes</h1>
+<h1>Recipes</h1>
 
 <table>
   <thead>
@@ -7,18 +7,18 @@
       <th>Yields</th>
       <th></th>
       <th></th>
-      <th></th>
+      <!--<th>Add to shopping list</th>-->
     </tr>
   </thead>
 
   <tbody>
     <% @recipes.each do |recipe| %>
       <tr>
-        <td><%= recipe.title %></td>
+        <td><%= link_to recipe.title, recipe %></td>
         <td><%= recipe.yields %></td>
-        <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%= render(:partial => "add_to_shopping_list") %></td>-->
       </tr>
     <% end %>
   </tbody>

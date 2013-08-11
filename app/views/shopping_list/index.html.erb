@@ -1,0 +1,13 @@
+<h1>Shopping List</h1>
+
+<% if @shopping_list.recipes %>
+  <ul>
+  <% @shopping_list.recipes.each do |r| %>
+       <li><%= r[:recipe].title %>, for <%= r[:yields] %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= button_to "Clear" , :action => 'clear' %>
+
+<%= link_to "Calculate ingredients" , :action => 'ingredients' %>

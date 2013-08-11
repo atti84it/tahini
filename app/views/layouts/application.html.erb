@@ -5,10 +5,24 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "main" , :media => "all" %>
 </head>
 <body>
 
-<%= yield %>
+<div id="banner">
+  <%= image_tag("logo.png" ) %>
+  <%= @page_title || "Tahini recipe manager" %>
+</div>
+<div id="columns">
+  <div id="side">
+    <%= link_to 'Recipes', :controller=>:recipes, :action=>:index %><br />
+    <%= link_to 'Shopping list', :controller=>:shopping_list, :action=>:index %><br />
+    <a href="http://www....">Tahini code</a><br />
+  </div>
+  <div id="main">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

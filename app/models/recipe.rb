@@ -1,6 +1,7 @@
 class Recipe < ActiveRecord::Base
   validates_presence_of :title, :yields
   validates_numericality_of :yields
+  attr_reader :ingredients
   
   def initialize_bak(*args)
     super(*args)
@@ -8,9 +9,10 @@ class Recipe < ActiveRecord::Base
   end  
   
   def parse_ingredients(txt)
+    @ingredients = []
     txt.split("\n").each do |line|
       if line.strip != ''
-        i = Ingredient.new_from_string(line.strip)
+        i = Ingredient.new_from_string(line.strip, self)
         @ingredients << i
       end 
     end
@@ -18,7 +20,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def multiply(factor)
-    @yields = @yields * factor
+    self.yields = self.yields * factor
     @ingredients.each do |i|
       i.multiply(factor)
     end
@@ -26,7 +28,8 @@ class Recipe < ActiveRecord::Base
   end
 
   def for(yields)
-    multiply(yields / @yields)
+    parse_ingredients self.ingredients_text
+    multiply(yields / self.yields)
   end
 
   def nice_text
