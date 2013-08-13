@@ -10,11 +10,14 @@ class Ingredient
     i=Ingredient.new
     i.set_values(results[:number], results[:unit], results[:name] )
     i.recipe = recipe
+    #puts "#{results[:number]}, #{results[:unit]}, #{results[:name]}"
     i
   end
 
   def set_values(number, unit, name)
-    @number = parse_amount(number ? number.strip : nil)
+    value = parse_amount(number ? number.strip : nil)
+    #puts "#{value}, #{unit}, #{name}"
+    @number = value
     @unit = unit
     @name = name
     self

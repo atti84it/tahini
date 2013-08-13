@@ -1,7 +1,9 @@
 <h1>Ingredients</h1>
 
 
-<p>Sorted <%= @sorting_mode.to_s %></p>
+<p>Sorted <%= @sorting_mode.to_s %>, 
+sort: <%= link_to 'by recipe', :sorting_mode => 'by_recipe' %>,
+<%= link_to 'by ingredient name', :sorting_mode => 'by_ingredient_name' %></p>
 
 <% if @ingredients %>
   <ul>
