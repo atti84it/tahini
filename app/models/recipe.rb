@@ -6,7 +6,35 @@ class Recipe < ActiveRecord::Base
   def initialize_bak(*args)
     super(*args)
     @ingredients = []
-  end  
+  end
+  
+  def self.import_gourmet_text(txt)
+    require 'nokogiri'
+    noko = Nokogiri::XML(txt)
+
+    noko.xpath('//recipe').each do |t|
+      title = t.children.css('title').inner_text
+      existing_recipe = Recipe.where(:title => title).first
+      r = Recipe.new
+      if existing_recipe
+        r.title = "#{title} (#{Time.now.to_s})"
+      else
+        r.title = title
+      end
+      
+      r.yields = t.children.css('yields').inner_text.to_f
+      r.ingredients_text = ""
+      
+      t.children.css('ingredient-list').children.css('ingredient').each do |i|
+          number = i.children.css('amount').inner_text.to_f
+          unit = i.children.css('unit').inner_text
+          name = i.children.css('item').inner_text
+          r.ingredients_text = "#{r.ingredients_text}#{number} #{unit} #{name}\n"
+      end
+      
+      r.save   
+    end
+  end # self.import_gourmet_text
   
   def parse_ingredients(txt)
     @ingredients = []

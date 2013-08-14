@@ -49,7 +49,8 @@ test:
   database: tahini_test
   pool: 5
   username: tahini
-  password:
+  password: tahini
+  host: localhost  
 
 production:
   adapter: postgresql

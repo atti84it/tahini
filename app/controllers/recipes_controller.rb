@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.sort_by(&:title)
   end
 
   # GET /recipes/1
@@ -34,6 +34,13 @@ class RecipesController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def load_gourmet_file
+    if params[:file_content]
+      Recipe.import_gourmet_text params[:file_content]
+      redirect_to :action => 'index'
     end
   end
 
