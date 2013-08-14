@@ -1,0 +1,39 @@
+<%= form_for(@menu) do |f| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% @menu.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  
+  <% if @menu.menu_items %>
+    <h2>Recipes in the menu:</h2>
+    <table>
+    <% @menu.menu_items.each do |item|%>
+      <% if item.recipe %>
+        <tr>
+          <td><%= "#{item.recipe.title} (#{item.yields})" %></td>
+          
+          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </table>
+  <% end %>
+  
+  <%= render(:partial => "add_menu_item_temp") %>
+  
+  <div class="actions">
+    <!--<%= f.submit %>-->
+  </div>
+<% end %>

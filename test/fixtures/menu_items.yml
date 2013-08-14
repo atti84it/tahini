@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  menu_id: 
+  yields: 1
+  recipe_id: 
+
+two:
+  menu_id: 
+  yields: 1
+  recipe_id: 

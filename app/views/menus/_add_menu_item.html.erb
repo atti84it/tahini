@@ -1,0 +1,27 @@
+<%= form_for(@menu_item) do |f| %>
+  <% if @menu_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
+
+      <ul>
+      <% @menu_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :recipe %><br>
+    <%= collection_select(:menu_item, :recipe_id, Recipe.all, :id, :title, {:include_blank => 'Select recipe...'}, {:class => 'drop-down'}) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :yields %><br>
+    <%= f.number_field :yields %>
+  </div>  
+  
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>

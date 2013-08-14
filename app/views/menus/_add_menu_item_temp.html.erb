@@ -1,0 +1,15 @@
+<%= form_tag(:controller=>'menu_items', :action => 'create', :menu_id => @menu) do %>
+  <div class="field" style = "display: inline;">
+    <%= label_tag :recipe %><br>
+    <%= collection_select(:menu_item, :recipe_id, Recipe.all, :id, :title, {:include_blank => 'Select recipe...'}, {:class => 'drop-down'}) %>
+  </div>
+  
+  <div class="field" style = "display: inline;">
+    <%= label_tag :item_yields %>
+    <%= number_field_tag :item_yields %>
+  </div>  
+  
+  <div class="actions" style = "margin-top: 15px;">
+    <%= submit_tag "Update" %>
+  </div>
+<% end %>

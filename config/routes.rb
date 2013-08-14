@@ -1,4 +1,8 @@
 Tahini::Application.routes.draw do
+  resources :menu_items
+
+  resources :menus
+
   get "shopping_list/index"
   post "shopping_list/add_recipe"
   post "shopping_list/clear"
