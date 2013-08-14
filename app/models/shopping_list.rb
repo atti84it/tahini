@@ -1,6 +1,14 @@
 class ShoppingList
   attr_reader :recipes
   
+  def self.new_from_menu(menu)
+    sl = ShoppingList.new
+    menu.menu_items.each do |mi|
+      sl.add_recipe mi.recipe_id, mi.yields
+    end
+    sl
+  end
+  
   def initialize
     @recipes = []
     @ingredients = []

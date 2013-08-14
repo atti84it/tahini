@@ -22,8 +22,7 @@
     <% @menu.menu_items.each do |item|%>
       <% if item.recipe %>
         <tr>
-          <td><%= "#{item.recipe.title} (#{item.yields})" %></td>
-          
+          <td><%= link_to item.recipe.title, item.recipe %> for <%= item.yields %></td>
           <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

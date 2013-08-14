@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_menu, only: [:show, :edit, :update, :destroy, :shopping_list]
 
   # GET /menus
   # GET /menus.json
@@ -20,6 +20,17 @@ class MenusController < ApplicationController
   # GET /menus/1/edit
   def edit
   end
+  
+  def shopping_list
+    sl = ShoppingList.new_from_menu @menu
+    @sorting_mode = params[:sorting_mode] ? params[:sorting_mode] : 'by_ingredient_name'
+    case @sorting_mode
+      when 'by_recipe'
+      @ingredients = sl.group_by_recipe
+      when 'by_ingredient_name'
+      @ingredients = sl.group_by_ingredient_name
+    end    
+  end  
 
   # POST /menus
   # POST /menus.json

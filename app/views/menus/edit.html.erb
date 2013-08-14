@@ -1,5 +1,5 @@
-<h1>Editing menu</h1>
+<h1>Menu: <%= @menu.title %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', menus_path %>
+<%= link_to 'Menus', menus_path %> <%= link_to 'Shopping list', id: @menu, action: 'shopping_list' %> 

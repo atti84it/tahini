@@ -1,0 +1,20 @@
+<h1>Shopping list for menu: <%= @menu.title %></h1>
+
+<p>Sorted <strong><%= @sorting_mode.gsub('_', ' ')%></strong> , 
+sort: <%= link_to 'by recipe', :sorting_mode => 'by_recipe' %>,
+<%= link_to 'by ingredient name', :sorting_mode => 'by_ingredient_name' %></p>
+
+<% if @ingredients %>
+  <table>
+  <% @ingredients.each do |ingr| %>
+    <% i = ingr[:i] %>
+    
+    <tr>
+      <td><%= i.nice_text %>
+      <td><%= link_to i.recipe.title, i.recipe %> for <%= i.recipe.yields %>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<%= link_to "Menu: #{@menu.title}", id: @menu, action: 'edit' %>

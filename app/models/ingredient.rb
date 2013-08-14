@@ -2,7 +2,7 @@ class Ingredient
   attr_reader :number,:unit,:name
   attr_accessor :recipe
 
-  @@units = %w[ml l g gr kilo kilos kg lb lbs oz taza tazas]
+  @@units = %w[ml l litro litros g gr kilo kilos kg lb lbs onza onzas oz taza tazas]
   
   # Creates new object from strings like "1 1/2 kg rice" or "black pepper"
   def self.new_from_string(str, recipe)
@@ -26,7 +26,11 @@ class Ingredient
   end
 
   def multiply(factor)
-    @number = @number * factor
+    if @number != nil
+      @number = @number * factor
+    else
+      @number = 0
+    end
     self
   end
 
