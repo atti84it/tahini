@@ -2,11 +2,11 @@ class Ingredient
   attr_reader :number,:unit,:name
   attr_accessor :recipe
 
-  @@units = %w[ml l litro litros g gr kilo kilos kg lb lbs onza onzas oz taza tazas]
+  @@units = %w[ml l litro litros g gr kilo kilos kg lb lbs libra libras onza onzas oz taza tazas]
   
   # Creates new object from strings like "1 1/2 kg rice" or "black pepper"
   def self.new_from_string(str, recipe)
-    results = /(?<number>([\d.]*)\s((\d+)\/(\d+))?)?\s?(?<unit>#{@@units.join('|')})?\s?(?<name>[[:alpha:]\s]+)/u.match str
+    results = /(?<number>([\d.]*)\s((\d+)\/(\d+))?)?\s?(?<unit>#{@@units.join('|')})?\s(?<name>[[:alpha:]\s]+)/u.match str
     i=Ingredient.new
     i.set_values(results[:number], results[:unit], results[:name] )
     i.recipe = recipe

@@ -1,7 +1,7 @@
 <%= form_tag(:controller=>'menu_items', :action => 'create', :menu_id => @menu) do %>
   <div class="field" style = "display: inline;">
     <%= label_tag :recipe %><br>
-    <%= collection_select(:menu_item, :recipe_id, Recipe.all, :id, :title, {:include_blank => 'Select recipe...'}, {:class => 'drop-down'}) %>
+    <%= collection_select(:menu_item, :recipe_id, Recipe.all.order(:title), :id, :title, {:include_blank => 'Select recipe...'}, {:class => 'drop-down'}) %>
   </div>
   
   <div class="field" style = "display: inline;">

@@ -12,6 +12,8 @@
     <% @menus.each do |menu| %>
       <tr>
         <td><%= link_to menu.title, edit_menu_path(menu) %></td>
+        <td><%= #menu.recipes_titles.join ' '
+         %></td>
         <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
