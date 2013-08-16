@@ -10,7 +10,8 @@ sort: <%= link_to 'by recipe', :sorting_mode => 'by_recipe' %>,
     <% i = ingr[:i] %>
     
     <tr>
-      <td><%= i.nice_text %>
+      <td><%= "#{i.nice_number} #{i.unit}" %>
+      <td><%= i.name %>
       <td><%= link_to i.recipe.title, i.recipe %> for <%= i.recipe.yields %>
     </tr>
   <% end %>

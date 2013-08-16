@@ -17,7 +17,6 @@
         <td><%= link_to recipe.title, recipe %></td>
         <td><%= recipe.yields %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <!--<td><%= render(:partial => "add_to_shopping_list") %></td>-->
       </tr>
     <% end %>
@@ -26,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Recipe', new_recipe_path %> <%= link_to 'Load Gourmet file', :action => 'load_gourmet_file' %>
+<%= link_to 'New Recipe', new_recipe_path %> |
+<%= link_to 'Load Gourmet file', :action => 'load_gourmet_file' %>

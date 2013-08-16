@@ -8,13 +8,15 @@
 <% if @recipe.ingredients_text %>
   <ul>
   <% @recipe.ingredients_text.split("\n").each do |i| %>
-       <li> <%= i %></li>
+       <li><%= Ingredient.new_from_string(i,nil).nice_text %></li>
   <% end %>
   </ul>
 <% end %>
 
+<%= link_to 'Recipes', recipes_path %> |
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+<%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 
 <h2>Add to shopping list: </h2>
 <%= render(:partial => "add_to_shopping_list") %>

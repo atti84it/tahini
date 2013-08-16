@@ -46,6 +46,11 @@ class TestIngredient < Test::Unit::TestCase
     assert_equal(2.5, i.number)
     assert_equal('gr', i.unit)
     assert_equal('nuez moscada', i.name)
+    
+    i = Ingredient.new_from_string("sal", nil)
+    assert_equal(nil, i.number)
+    assert_equal(nil, i.unit)
+    assert_equal('sal', i.name)    
   end
 
   def test_parse_amount
