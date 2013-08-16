@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Singular:</strong>
+  <%= @custom_unit.singular %>
+</p>
+
+<p>
+  <strong>Plural:</strong>
+  <%= @custom_unit.plural %>
+</p>
+
+<p>
+  <strong>Equivalence factor:</strong>
+  <%= @custom_unit.equivalence_factor %>
+</p>
+
+<p>
+  <strong>Equivalence unit:</strong>
+  <%= @custom_unit.equivalence_unit %>
+</p>
+
+<%= link_to 'Edit', edit_custom_unit_path(@custom_unit) %> |
+<%= link_to 'Back', custom_units_path %>

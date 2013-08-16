@@ -1,4 +1,6 @@
 Tahini::Application.routes.draw do
+  resources :custom_units
+
   resources :menu_items
 
   resources :menus

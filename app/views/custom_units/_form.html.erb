@@ -1,0 +1,33 @@
+<%= form_for(@custom_unit) do |f| %>
+  <% if @custom_unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custom_unit.errors.count, "error") %> prohibited this custom_unit from being saved:</h2>
+
+      <ul>
+      <% @custom_unit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :singular %><br>
+    <%= f.text_field :singular %>
+  </div>
+  <div class="field">
+    <%= f.label :plural %><br>
+    <%= f.text_field :plural %>
+  </div>
+  <div class="field">
+    <%= f.label :equivalence_factor %><br>
+    <%= f.text_field :equivalence_factor %>
+  </div>  
+  <div class="field">
+    <%= f.label :equivalence_unit %><br>
+    <%= f.text_field :equivalence_unit %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  singular: MyString
+  plural: MyString
+  equivalence_unit: MyString
+  equivalence_factor: 1.5
+
+two:
+  singular: MyString
+  plural: MyString
+  equivalence_unit: MyString
+  equivalence_factor: 1.5

@@ -1,0 +1,33 @@
+<h1>Listing custom_units</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Singular</th>
+      <th>Plural</th>
+      <th>Equivalence unit</th>
+      <th>Equivalence factor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_units.each do |custom_unit| %>
+      <tr>
+        <td><%= custom_unit.singular %></td>
+        <td><%= custom_unit.plural %></td>
+        <td><%= custom_unit.equivalence_factor %></td>
+        <td><%= custom_unit.equivalence_unit %></td>        
+        <td><%= link_to 'Show', custom_unit %></td>
+        <td><%= link_to 'Edit', edit_custom_unit_path(custom_unit) %></td>
+        <td><%= link_to 'Destroy', custom_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Custom unit', new_custom_unit_path %>
