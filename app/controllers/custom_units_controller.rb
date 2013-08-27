@@ -69,6 +69,6 @@ class CustomUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_unit_params
-      params.require(:custom_unit).permit(:singular, :plural, :equivalence_unit, :equivalence_factor)
+      params.require(:custom_unit).permit(:singular, :plural, :physical_type, :equivalence_unit, :equivalence_factor)
     end
 end

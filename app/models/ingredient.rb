@@ -28,9 +28,17 @@ class Ingredient
     self
   end
 
-  def human_number
-    raise StandardError
-    @number == 0 ? '' : @number
+  # Converts Ingredient into metric system
+  #  '1 taza maní' -> '200 ml maní'
+  #  '1 cup peanuts' -> '200 ml peanuts'
+  def metric
+    begin
+      u = Unit.where("singular = #{@unit} OR plural = #{@unit}").first
+    rescue StandardError
+    
+    end
+    
+    @number *= u
   end
 
   def multiply(factor)
@@ -49,7 +57,6 @@ class Ingredient
   end
   
   def nice_text
-    puts "hi #{nice_number} #{@unit} #{@name}"
     "#{nice_number} #{@unit} #{@name}"
   end
 

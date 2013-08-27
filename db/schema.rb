@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130816131414) do
+ActiveRecord::Schema.define(version: 20130816224426) do
 
   create_table "custom_units", force: true do |t|
     t.string   "singular"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20130816131414) do
     t.float    "equivalence_factor"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "physical_type"
   end
 
   create_table "ingredients", force: true do |t|

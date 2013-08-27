@@ -34,7 +34,6 @@ class ShoppingList
   def make_ingredients_list
     @ingredients = []
     @recipes.each do |r|
-      #puts "for #{r[:yields].class}"
       recipe = Recipe.find(r[:recipe_id])
       recipe.for(r[:yields]).ingredients.each do |i|
           @ingredients << {:name => i.name, :i => i}
