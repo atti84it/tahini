@@ -1,28 +1,48 @@
-== README
+= Tahini recipe manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tahini is a recipe manager written in Ruby on Rails
 
-Things you may want to cover:
+These features are currently enabled:
 
-* Ruby version
+* Save recipes
+* Group recipes in menus
+* Calculate shopping lists for menus, aggregating ingredients by recipe or by ingredient name
 
-* System dependencies
+Features under development:
 
-* Configuration
+* Conversion of ingredients from and to arbitrary measure units, like 'tbsp' or 'cup'
+* Native localization of interface *and ingredients* (e.g. translation of 'beans' into 'frijoles' and 'porotos')
 
-* Database creation
+== Installation
 
-* Database initialization
+* Install {Ruby 2.0}[http://www.ruby-lang.org/en/downloads/] and {Rails 4.0}[http://rubyonrails.org/download]
+* Install Postgresql and create a database named 'tahini' owned by 'tahini' with password 'tahini' (see {Database creation}[rdoc-label:label-Database+creation] )
+* Clone git repo
+ git clone https://github.com/atti84it/tahini.git
+* Enter Tahini directory
+ cd tahini
+* Install gem dependencies
+ bundle install
+* Do migrations
+ rake db:migrate
+* Run the app
+ rails server
+* Open 'http://localhost:3000/recipes' in a browser
 
-* How to run the test suite
+=== Database creation
 
-* Services (job queues, cache servers, search engines, etc.)
+ sudo apt-get install postgresql libpq-dev pgadmin3
+ 
+ sudo -u postgres psql postgres
+ \password postgres
 
-* Deployment instructions
+ then edit '/etc/postgresql/9.1/main/postgresql.conf' and uncomment the following line:
+ listen_addresses = 'localhost'
 
-* ...
+ sudo -u postgres createuser -D -A -P tahini
+ sudo -u postgres createdb -O tahini tahini
 
+== Running tests
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+ bundle exec rspec spec
+
