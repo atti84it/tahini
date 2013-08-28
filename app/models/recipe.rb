@@ -3,11 +3,6 @@ class Recipe < ActiveRecord::Base
   validates_numericality_of :yields
   attr_reader :ingredients
   
-  def initialize_bak(*args)
-    super(*args)
-    @ingredients = []
-  end
-  
   def self.import_gourmet_text(txt)
     require 'nokogiri'
     noko = Nokogiri::XML(txt)
@@ -36,7 +31,7 @@ class Recipe < ActiveRecord::Base
     end
   end # self.import_gourmet_text
   
-  def parse_ingredients(txt)
+  def parse_ingredients(txt=self.ingredients_text)
     @ingredients = []
     txt.split("\n").each do |line|
       if line.strip != ''
@@ -48,7 +43,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def multiply(factor)
-    self.yields = self.yields * factor
+    self.yields = self.yields * factor.to_f
     @ingredients.each do |i|
       i.multiply(factor)
     end
@@ -57,7 +52,7 @@ class Recipe < ActiveRecord::Base
 
   def for(yields)
     parse_ingredients self.ingredients_text
-    multiply(yields / self.yields)
+    multiply(yields / self.yields.to_f)
   end
 
   def nice_text

@@ -10,6 +10,12 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    if params[:yields]
+      yields = params[:yields].to_i
+      @recipe = @recipe.for(yields)
+    else
+      @recipe.parse_ingredients
+    end
   end
 
   # GET /recipes/new

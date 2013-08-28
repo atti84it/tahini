@@ -3,12 +3,17 @@
 
 <p>Yields: <%= @recipe.yields %></p>
 
+<%= form_tag do %>
+  Calculate for: <%= text_field_tag 'yields' %>
+  <%= submit_tag 'Calculate' %>
+<% end %>
+
 <h2>Ingredients:</h2>
 
-<% if @recipe.ingredients_text %>
+<% if @recipe.ingredients %>
   <ul>
-  <% @recipe.ingredients_text.split("\n").each do |i| %>
-       <li><%= Ingredient.new_from_string(i,nil).nice_text %></li>
+  <% @recipe.ingredients.each do |i| %>
+       <li><%= i.nice_text %></li>
   <% end %>
   </ul>
 <% end %>

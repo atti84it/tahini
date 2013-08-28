@@ -14,6 +14,7 @@ Tahini::Application.routes.draw do
   get "recipes/load_gourmet_file"
   post "recipes/load_gourmet_file"
   resources :recipes
+  post "recipes/:id" => "recipes#show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
