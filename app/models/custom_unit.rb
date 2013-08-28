@@ -8,10 +8,9 @@ class CustomUnit < ActiveRecord::Base
   
   attr_accessor :factor
   
-  def initialize
-    a = super
-    self.factor = 1
-    a
+  def initialize(*args)
+    @factor = 1
+    super(*args)
   end  
 
   def metric
