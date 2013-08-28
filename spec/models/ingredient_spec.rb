@@ -7,7 +7,7 @@ describe Ingredient, "#new_from_string" do
     i.unit.should eq('ml')
     i.name.should eq('aceite')
     i.multiply(3).number.should eq(6)
-    
+
     i = Ingredient.new_from_string("2 1/2 kg papas", nil)
     assert_equal(2.5, i.number)
     assert_equal('kg', i.unit)
@@ -43,20 +43,25 @@ describe Ingredient, "#new_from_string" do
     assert_equal(2.5, i.number)
     assert_equal('gr', i.unit)
     assert_equal('nuez moscada', i.name)
-    
+
     i = Ingredient.new_from_string("sal", nil)
     assert_equal(nil, i.number)
     assert_equal(nil, i.unit)
-    assert_equal('sal', i.name)        
-    
+    assert_equal('sal', i.name)
+
+    i = Ingredient.new_from_string("4 limones", nil)
+    i.number.should eq(4)
+    i.unit.should eq(nil)
+    i.name.should eq('limones')
+
   end
-  
+
   it "parses string amounts into numeric ones" do
     i = Ingredient.new
     assert_equal(35.6, i.send(:parse_amount, 35.6))
     assert_equal(1, i.send(:parse_amount, '1'))
     assert_equal(0.2, i.send(:parse_amount, '1/5'))
     assert_equal(3.5, i.send(:parse_amount, '3 1/2'))
-    assert_raise (StandardError) { i.send(:parse_amount, '2 4 1/2') }    
+    assert_raise (StandardError) { i.send(:parse_amount, '2 4 1/2') }
   end
 end

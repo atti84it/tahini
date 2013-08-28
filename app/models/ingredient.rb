@@ -7,7 +7,12 @@ class Ingredient
   # Creates new object from strings like "1 1/2 kg rice" or "black pepper"
   def self.new_from_string(str, recipe)
     return Ingredient.new if str == ''
-    results = /(?<number>([\d.]*)\s?((\d+)\/(\d+))?)?\s?(?<unit>#{@@units.join('|')})?\s?(?<name>[[:alpha:]\s]+)/u.match str
+    #old regex:
+    #results = /(?<number>([\d.]*)\s?((\d+)\/(\d+))?)?\s?(?<unit>#{@@units.join('|')})?\s?(?<name>[[:alpha:]\s]+)/u.match str
+    number = '(?<number>([\d.]*)\s?((\d+)\/(\d+))?\s?)?'
+    unit = '(?<unit>' + @@units.map{|u| u + '\s' }.join('|') + ')?'
+    name = '(?<name>[[:alpha:]\s]+)'
+    results = /#{number}#{unit}#{name}/u.match str
     i=Ingredient.new
     i.set_values(results[:number], results[:unit], results[:name] )
     i.recipe = recipe
@@ -23,8 +28,8 @@ class Ingredient
   def set_values(number, unit, name)
     value = parse_amount(number ? number.strip : nil)
     @number = value
-    @unit = unit
-    @name = name
+    @unit = unit ? unit.strip : nil
+    @name = name ? name.strip : nil
     self
   end
 
