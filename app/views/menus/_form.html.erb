@@ -15,35 +15,8 @@
     <%= f.label :title %><br>
     <%= f.text_field :title, :size=>80 %>
   </div>
-  
-  <% if @menu.menu_items %>
-    <h2>Recipes in the menu:</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Yields</th>
-          <th></th>
-          <!--<th>Add to shopping list</th>-->
-        </tr>
-      </thead>   
-      <tbody> 
-        <% @menu.menu_items.each do |item|%>
-          <% if item.recipe %>
-            <tr>
-              <td><%= link_to item.recipe.title, item.recipe %></td>
-              <td><%= item.yields %></td>
-              <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-  
-  <%= render(:partial => "add_menu_item_temp") %>
-  
+    
   <div class="actions">
-    <!--<%= f.submit %>-->
+    <%= f.submit %>
   </div>
 <% end %>

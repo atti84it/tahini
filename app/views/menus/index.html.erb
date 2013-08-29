@@ -1,4 +1,4 @@
-<h1>Listing menus</h1>
+<h1><%= t('.menus') %></h1>
 
 <table>
   <thead>
@@ -14,7 +14,7 @@
         <td><%= link_to menu.title, edit_menu_path(menu) %></td>
         <td><%= #menu.recipes_titles.join ' '
          %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('.destroy'), menu, method: :delete, data: { confirm: t('.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Menu', new_menu_path %>
+<%= link_to t('.new_menu'), new_menu_path %>

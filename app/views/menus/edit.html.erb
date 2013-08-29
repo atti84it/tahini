@@ -1,5 +1,7 @@
 <h1>Menu: <%= @menu.title %></h1>
 
-<%= render 'form' %>
+<%= render 'edit_recipes' %>
 
-<%= link_to 'Menus', menus_path %> <%= link_to 'Shopping list', id: @menu, action: 'shopping_list' %> 
+<%= render(:partial => "add_menu_item_temp") %>
+
+<%= link_to t('.menus'), menus_path %> <%= link_to 'Shopping list', id: @menu, action: 'shopping_list' %> 

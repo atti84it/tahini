@@ -1,3 +1,5 @@
+<% # The only difference is the use of form_for instead of form_tag %>
+
 <%= form_for(@menu_item) do |f| %>
   <% if @menu_item.errors.any? %>
     <div id="error_explanation">
