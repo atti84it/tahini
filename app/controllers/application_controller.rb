@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
 
   protected
   def set_locales
-    puts "available locales:" + I18n.available_locales.join('-')
     if params[:locale]
       if I18n.available_locales.include?(params[:locale].to_sym)
         I18n.locale = params[:locale]
