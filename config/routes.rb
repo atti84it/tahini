@@ -1,25 +1,31 @@
 Tahini::Application.routes.draw do
-  resources :custom_units
 
-  resources :menu_items
+  scope '(:locale)' do
 
-  resources :menus
-  get "menus/:id/shopping_list" => 'menus#shopping_list'
+    resources :custom_units
 
-  get "shopping_list/index"
-  post "shopping_list/add_recipe"
-  post "shopping_list/clear"
-  get "shopping_list/ingredients"
-  
-  get "recipes/load_gourmet_file"
-  post "recipes/load_gourmet_file"
-  resources :recipes
-  post "recipes/:id" => "recipes#show"
+    resources :menu_items
+
+    resources :menus
+    get "menus/:id/shopping_list" => 'menus#shopping_list'
+ 
+    ### Eliminare
+    get "shopping_list/index"
+    post "shopping_list/add_recipe"
+    post "shopping_list/clear"
+    get "shopping_list/ingredients"
+    
+    get "recipes/load_gourmet_file"
+    post "recipes/load_gourmet_file"
+    resources :recipes
+    post "recipes/:id" => "recipes#show"
+    
+    root 'recipes#index'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'recipes#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

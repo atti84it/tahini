@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @recipe.title %></h1>
 
-<p>Yields: <%= @recipe.yields %></p>
+<p><%= t('.yields') %>: <%= @recipe.yields %></p>
 
 <%= form_tag do %>
-  Calculate for: <%= text_field_tag 'yields' %>
-  <%= submit_tag 'Calculate' %>
+  <%= t('.calculate_for') %>: <%= text_field_tag 'yields' %>
+  <%= submit_tag t('.calculate') %>
 <% end %>
 
 <h2>Ingredients:</h2>
@@ -18,12 +18,6 @@
   </ul>
 <% end %>
 
-<%= link_to 'Recipes', recipes_path %> |
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-
-<h2>Add to shopping list: </h2>
-<%= render(:partial => "add_to_shopping_list") %>
-
-
+<%= link_to t('.recipes'), recipes_path %> |
+<%= link_to t('.edit'), edit_recipe_path(@recipe) %> |
+<%= link_to t('.delete'), @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>

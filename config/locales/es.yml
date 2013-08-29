@@ -1,0 +1,52 @@
+es:
+  layouts:
+    application:
+      title: "Gestor de recetas Tahini"
+      menus: "Menus"
+      recipes: "Recetas"
+      custom_units: "Unidades personalizadas"
+      tahini_code: "Código de Tahini"
+
+  recipes:
+    index:
+      recipes: "Recetas"
+      title: "Nombre"
+      yields: "Porciones"
+      edit: "Editar"
+      new_recipe: "Nueva receta"
+      load_gourmet_file: "Cargar archivo de Gourmet"
+    new:
+      new_recipe: "Nueva receta"
+      recipes: "Recetas"
+    edit:
+      editing_recipe: "Editar la receta"
+      recipes: "Recetas"
+    form:
+      submit: "Guardar"
+    show:
+      yields: "Porciones"
+      calculate_for: "Calcular para"
+      calculate: "Calcular"
+      recipes: "Recetas"
+      edit: "Editar"
+      delete: "Borrar"
+
+  activerecord:
+    models:
+      recipe: "receta"
+    attributes:
+      recipe:
+        title: "Título"
+        yields: "Porciones"
+        ingredients: "Ingredientes"
+    errors:
+      messages:
+        inclusion: "no est&aacute; incluido en la lista"
+        blank:     "no puede quedar en blanco"
+        not_a_number: "no es un número"
+  errors:
+    template:
+      body:        "Hay problemas con los siguientes campos:"
+      header:
+        one:       "1 error ha impedido que este %{model} se guarde"
+        other:     "%{count} errores han impedido que este %{model} se guarde"

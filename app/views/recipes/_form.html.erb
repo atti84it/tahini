@@ -1,8 +1,8 @@
 <%= form_for(@recipe) do |f| %>
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
+      <h2><%= t('errors.template.header', :count=>@recipe.errors.count, :model=>t('activerecord.models.recipe')) %></h2>
+      <p><%= t('errors.template.body') %></p>
       <ul>
       <% @recipe.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -27,6 +27,6 @@
   
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('.submit') %>
   </div>
 <% end %>

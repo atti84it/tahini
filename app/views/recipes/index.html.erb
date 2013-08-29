@@ -1,13 +1,12 @@
-<h1>Recipes</h1>
+<h1><%= t('.recipes') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Yields</th>
+      <th><%= t('.title') %></th>
+      <th><%= t('.yields') %></th>
       <th></th>
       <th></th>
-      <!--<th>Add to shopping list</th>-->
     </tr>
   </thead>
 
@@ -16,8 +15,7 @@
       <tr>
         <td><%= link_to recipe.title, recipe %></td>
         <td><%= recipe.yields %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <!--<td><%= render(:partial => "add_to_shopping_list") %></td>-->
+        <td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,5 +23,5 @@
 
 <br>
 
-<%= link_to 'New Recipe', new_recipe_path %> |
-<%= link_to 'Load Gourmet file', :action => 'load_gourmet_file' %>
+<%= link_to t('.new_recipe'), new_recipe_path %> |
+<%= link_to t('.load_gourmet_file'), :action => 'load_gourmet_file' %>

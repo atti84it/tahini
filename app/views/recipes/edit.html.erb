@@ -1,6 +1,6 @@
-<h1>Editing recipe</h1>
+<h1><%= t('.editing_recipe') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Recipes', recipes_path %> |
+<%= link_to t('.recipes'), recipes_path %> |
 <%= link_to @recipe.title, @recipe %> 

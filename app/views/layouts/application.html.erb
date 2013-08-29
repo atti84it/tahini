@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tahini recipe manager</title>
+  <title><%= t('.title') %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,16 +10,20 @@
 <body>
 
 <div id="banner">
+  <%= form_tag recipes_path, :class => 'locale' do %>
+    <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), :onchange => 'this.form.submit()' %>
+    <%= submit_tag 'submit' %>
+    <%= javascript_tag "$$('.locale input').each(Element.hide)" %>
+  <% end %>  
   <%= image_tag("logo.png" ) %>
-  <%= @page_title || "Tahini recipe manager" %>
+  <%= @page_title || t('.title') %>
 </div>
 <div id="columns">
   <div id="side">
-    <%= link_to 'Menus', :controller=>:menus, :action=>:index %><br />
-    <%= link_to 'Recipes', :controller=>:recipes, :action=>:index %><br />
-    <%= link_to 'Custom Units', :controller=>:custom_units, :action=>:index %><br />
-    <%= link_to 'Shopping list', :controller=>:shopping_list, :action=>:index %><br />
-    <a href="https://github.com/atti84it/tahini">Tahini code</a><br />
+    <%= link_to t('.menus'), :controller=>:menus, :action=>:index %><br />
+    <%= link_to t('.recipes'), :controller=>:recipes, :action=>:index %><br />
+    <%= link_to t('.custom_units'), :controller=>:custom_units, :action=>:index %><br />
+    <a href="https://github.com/atti84it/tahini"><%= t('.tahini_code') %></a><br />
   </div>
   <div id="main">
     <%= yield %>

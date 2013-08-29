@@ -4,7 +4,11 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all.sort_by(&:title)
+    if params[:set_locale]
+      redirect_to recipes_path(:locale => params[:set_locale])
+    else
+      @recipes = Recipe.all.sort_by(&:title)
+    end
   end
 
   # GET /recipes/1

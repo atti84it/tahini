@@ -20,4 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: "Tahini recipe manager"
+      menus: "Menus"
+      recipes: "Recipes"
+      custom_units: "Custom units"
+      tahini_code: "Tahini code"
+
+  recipes:
+    index:
+      recipes: "Recipes"
+      title: "Name"
+      yields: "Yields"
