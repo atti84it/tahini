@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :physical_type %><br>
-    <%= f.text_field :physical_type %>
+    <%= f.select("physical_type", [['Weight', Unit::WEIGHT],['Volume', Unit::VOLUME]]) %>
   </div>  
   <div class="field">
     <%= f.label :equivalence_factor %><br>
