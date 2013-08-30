@@ -1,23 +1,26 @@
-  <% if @menu.menu_items %>
-    <h2>Recipes in the menu:</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Yields</th>
-          <th></th>
-        </tr>
-      </thead>   
-      <tbody> 
-        <% @menu.menu_items.each do |item|%>
-          <% if item.recipe %>
-            <tr>
-              <td><%= link_to item.recipe.title, item.recipe %></td>
-              <td><%= item.yields %></td>
-              <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
+<%  ### Hide Recipes in the menu if empty
+%>
+
+<% if @menu.menu_items %>
+  <h2><%= t('.recipes_in_the_menu') %>:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.title') %></th>
+        <th><%= t('.yields')%></th>
+        <th></th>
+      </tr>
+    </thead>   
+    <tbody> 
+      <% @menu.menu_items.each do |item|%>
+        <% if item.recipe %>
+          <tr>
+            <td><%= link_to item.recipe.title, item.recipe %></td>
+            <td><%= item.yields %></td>
+            <td><%= link_to t('.remove'), item, method: :delete, data: { confirm: t('.are_you_sure') } %></td>
+          </tr>
         <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

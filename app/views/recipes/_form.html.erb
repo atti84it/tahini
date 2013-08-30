@@ -1,7 +1,7 @@
 <%= form_for(@recipe) do |f| %>
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= t('errors.template.header', :count=>@recipe.errors.count, :model=>t('activerecord.models.recipe')) %></h2>
+      <h2><%= t('errors.template.header', :count=>@recipe.errors.count) %></h2>
       <p><%= t('errors.template.body') %></p>
       <ul>
       <% @recipe.errors.full_messages.each do |msg| %>

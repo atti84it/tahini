@@ -7,6 +7,31 @@ es:
       custom_units: "Unidades personalizadas"
       tahini_code: "Código de Tahini"
 
+  menus:
+    index:
+      menus: "Menus"
+      destroy: "Borrar"
+      are_you_sure: "Estás seguro?"
+      new_menu: "Nuevo menu"
+    new:
+      new_menu: "Nuevo menu"
+      menus: "Menus"
+    form:
+      submit: "Guardar"
+    edit:
+      shopping_list: "Listado de compras"
+    edit_recipes:
+      recipes_in_the_menu: "Recetas en el menu"
+      title: "Nombre"
+      yields: "Porciones"
+      remove: "Quitar"
+      are_you_sure: "Estás seguro?"
+    add_menu_item_temp:
+      add_recipe: "Agrega receta:"
+      select_recipe: "Selecciona una receta..."
+      for_number: "Para:"
+      submit: "Agrega"
+
   recipes:
     index:
       recipes: "Recetas"
@@ -32,9 +57,9 @@ es:
       delete: "Borrar"
 
   activerecord:
-    models:
-      recipe: "receta"
     attributes:
+      menu:
+        title: "Nombre"
       recipe:
         title: "Título"
         yields: "Porciones"
@@ -48,5 +73,5 @@ es:
     template:
       body:        "Hay problemas con los siguientes campos:"
       header:
-        one:       "1 error ha impedido que este %{model} se guarde"
-        other:     "%{count} errores han impedido que este %{model} se guarde"
+        one:       "Hay 1 error en el formulario"
+        other:     "Hay %{count} errores en el formulario"
